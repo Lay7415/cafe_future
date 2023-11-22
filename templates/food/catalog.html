@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог еды</title>
+</head>
+<body>
+
+<h1>Каталог еды</h1>
+
+<form method="GET" action="{% url 'catalog' %}">
+    {{ form.as_p }}
+    <button type="submit">Отфильтровать</button>
+</form>
+
+{% for food in foods %}
+    <div>
+        <img src="{{ food.photo.url }}" alt="{{ food.description }}">
+        <h2>{{ food.name }}</h2>
+        <p>{{ food.composition }}</p>
+        <p>Цена: {{ food.price }}</p>
+    </div>
+{% endfor %}
+
+</body>
+</html>
