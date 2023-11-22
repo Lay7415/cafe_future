@@ -1,15 +1,70 @@
 <!-- cafe_news/templates/cafe_news/news_list.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cafe News</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .news-item {
+            max-width: 400px; /* Фиксированная ширина карточки */
+            margin: 20px auto; /* Центрирование карточек по горизонтали */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden; /* Обрезать контент, который может выходить за пределы карточки */
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            width: 100%; /* Сделать изображение 100% ширины контейнера */
+            height: auto;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin: 10px;
+        }
+
+        p {
+            color: #666;
+            font-size: 1em;
+            margin: 0 10px 10px; /* Небольшие отступы для текста */
+        }
+
+        .pub-date {
+            color: #888;
+            font-size: 0.8em;
+            margin: 0 10px 10px; /* Небольшие отступы для даты публикации */
+        }
+    </style>
 </head>
 <body>
     <h1>Cafe News</h1>
     {% for news_item in news_items %}
-        <h2>{{ news_item.title }}</h2>
-        <p>{{ news_item.content }}</p>
-        <p>Published on: {{ news_item.pub_date }}</p>
+        <div class="news-item">
+            <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}">
+            <h2>{{ news_item.title }}</h2>
+            <p>{{ news_item.content }}</p>
+            <p class="pub-date">Published on: {{ news_item.pub_date }}</p>
+        </div>
     {% endfor %}
 </body>
 </html>

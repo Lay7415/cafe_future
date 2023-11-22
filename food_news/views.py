@@ -4,4 +4,4 @@ from .models import News
 
 def news_list(request):
     news_items = News.objects.all()
-    return render(request, 'cafe_news/news_list.html', {'news_items': news_items})
+    return render(request, 'item-page/news_list.html', {'news_items': news_items})
