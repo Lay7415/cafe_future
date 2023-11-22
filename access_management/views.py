@@ -8,11 +8,12 @@ def registration_view(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
+            username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             
-            user = User.objects.create_user(email=email, password=password, first_name=first_name, last_name=last_name)
+            user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
             return redirect('login')
     else:
         form = RegistrationForm()
