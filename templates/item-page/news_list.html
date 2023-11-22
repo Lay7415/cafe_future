@@ -1,0 +1,15 @@
+<!-- cafe_news/templates/cafe_news/news_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cafe News</title>
+</head>
+<body>
+    <h1>Cafe News</h1>
+    {% for news_item in news_items %}
+        <h2>{{ news_item.title }}</h2>
+        <p>{{ news_item.content }}</p>
+        <p>Published on: {{ news_item.pub_date }}</p>
+    {% endfor %}
+</body>
+</html>
