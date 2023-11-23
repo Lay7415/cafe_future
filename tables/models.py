@@ -3,7 +3,7 @@ from access_management.models import User
 
 class Table(models.Model):
     photo = models.ImageField(upload_to='table_photos', verbose_name='Фотография')
-    price = models.PositiveIntegerField(verbose_name='Цена')
+    price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Цена')
     table_number = models.PositiveIntegerField(verbose_name='Номер Столика')
     type_choices = [
         ('just', 'Обычный'),
@@ -22,7 +22,7 @@ class Table(models.Model):
 class ReservedTable(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     table = models.ForeignKey(Table, on_delete=models.CASCADE, verbose_name='Стол')
-    data = models.DateField(verbose_name='Дата')
+    data = models.DateTimeField(verbose_name='Дата')
     duration = models.DurationField(verbose_name='Продолжительность')
 
     def __str__(self):

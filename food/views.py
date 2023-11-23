@@ -12,6 +12,8 @@ def catalog_view(request):
         min_price = form.cleaned_data['min_price']
         max_price = form.cleaned_data['max_price']
         search_query = form.cleaned_data['search_query'].lower()
+        print(min_price, max_price, type_of_food)
+        print(min_price)
 
         if type_of_food:
             foods = foods.filter(type_of_food=type_of_food)
