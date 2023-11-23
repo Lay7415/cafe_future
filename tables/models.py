@@ -1,20 +1,19 @@
 from django.db import models
 from access_management.models import User
 
-# Create your models here.
 class Table(models.Model):
     photo = models.ImageField(upload_to='table_photos', verbose_name='Фотография')
     price = models.PositiveIntegerField(verbose_name='Цена')
     table_number = models.PositiveIntegerField(verbose_name='Номер Столика')
     type_choices = [
-        (1, 'Обычный'),
-        (2, 'VIP'),
-        (3, 'Кабинки')
+        ('just', 'Обычный'),
+        ('vip', 'VIP'),
+        ('booths', 'Кабинки')
     ]
     type = models.CharField(max_length=20,choices=type_choices, verbose_name='Тип')
     
     def __str__(self):
-        return self.table_number
+        return f'{self.table_number}'
     
     class Meta:
         verbose_name = 'Стол'
