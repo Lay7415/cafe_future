@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'access_management',
     'food',
-    'tables'
+    'tables',
 ]
 
 MIDDLEWARE = [

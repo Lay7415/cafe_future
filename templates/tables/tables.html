@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Отфильтрованные столы</title>
     <style>
-        .table-card {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin: 10px;
-            width: 200px;
-            text-align: center;
-        }
+      .table-card {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin: 10px;
+        width: 200px;
+        text-align: center;
+      }
 
-        .table-card img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
+      .table-card img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Отфильтрованные столы</h1>
 
     <form method="GET" action="{% url 'tables' %}">
-        {{ form.as_p }}
-        <button type="submit">Применить фильтр</button>
+      {{ form.as_p }}
+      <button type="submit">Применить фильтр</button>
     </form>
 
     {% if tables %}
-        <h2>Результаты:</h2>
-        <div class="table-cards">
-            {% for table in tables %}
-                <div class="table-card">
-                    <img src="{{ table.photo.url }}" alt="Table Photo">
-                    <p>Номер стола: {{ table.table_number }}</p>
-                    <p>Цена: {{ table.price }}</p>
-                    <p>Тип: {{ table.get_type_display }}</p>
-                </div>
-            {% endfor %}
-        </div>
+    <h2>Результаты:</h2>
+    <div class="table-cards">
+      {% for table in tables %}
+      <div class="table-card" onclick="redirectToReserved({{ table.id }})">
+        <img src="{{ table.photo.url }}" alt="Table Photo" />
+        <p>Номер стола: {{ table.table_number }}</p>
+        <p>Цена: {{ table.price }}</p>
+        <p>Тип: {{ table.get_type_display }}</p>
+      </div>
+      {% endfor %}
+    </div>
     {% endif %}
-</body>
+    <script>
+      function redirectToReserved(tableId) {
+        var url = "{% url 'reserved' 0 %}".replace("0", tableId);
+        window.location.href = url;
+      }
+    </script>
+  </body>
 </html>

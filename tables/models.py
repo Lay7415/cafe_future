@@ -31,3 +31,6 @@ class ReservedTable(models.Model):
     class Meta:
         verbose_name = 'Бронированный стол'
         verbose_name_plural = 'Бронированные столы'
+        
+    def get_absolute_url(self):
+        return f'/reserved/{self.id}'
