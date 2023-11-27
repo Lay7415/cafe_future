@@ -1,0 +1,238 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main_page-header {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logotype {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.main_page-header-menu {
+    display: flex;
+    margin-left: auto;
+}
+
+.main_page-header-menu-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.main_page-header-menu-register-btn {
+    background-color: #D22525;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.main_page-introduction {
+    position: relative;
+    background: url('../images/main_page-introduction.jpg') center/cover no-repeat; 
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.main_page-introduction_title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.main_page-introduction-btn-container {
+    display: flex;
+    
+}
+
+.main_page-introduction-btn {
+    background-color: #E21837;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+    border-radius: 3px;
+}
+
+/* Updated style for the search section */
+.main_page-search {
+    text-align: center;
+    margin: 40px; /* Измените отступы по своему усмотрению */
+    background-color: #FFCA7B;
+    padding: 40px;
+    padding-bottom: 100px;
+    border-radius: 10px;
+}
+
+.main_page-search_title {
+    font-size: 24px;
+    margin-bottom: 50px;
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.main_page-search_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_page-search_input {
+    width: 70%; /* Измените ширину текстового поля по своему усмотрению */
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    margin-right: 10px; /* Добавлен отступ справа */
+    font-family: 'Arial', sans-serif; /* Замените на ваш предпочитаемый шрифт */
+    font-size: 16px; /* Измените размер шрифта по своему усмотрению */
+    outline: none;
+    border: none;
+}
+
+.main_page-search_btn {
+    background-color: #C15057;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif; /* Замените на ваш предпочитаемый шрифт */
+    font-size: 16px; /* Измените размер шрифта по своему усмотрению */
+    border-radius: 3px;
+}
+
+/* Style for the new products section */
+/* Updated style for the new products section */
+.main_page_new_products {
+    text-align: center;
+    padding: 40px; /* Измените отступы по своему усмотрению */
+}
+
+.main_page_new_products-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.main_page_new_products-container {
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку при нехватке места */
+}
+
+.main_page_new_products-container div {
+    box-sizing: border-box;
+    width: 300px; /* Измените ширину блока продукта по своему усмотрению */
+    margin: 30px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 40px rgb(69, 69, 69);
+}
+
+.main_page_new_products-container img {
+    max-width: 100%; /* Чтобы изображение не выходило за пределы блока */
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 10px;
+}
+
+.main_page_new_products-container h2 {
+    font-size: 16px;
+    white-space: nowrap; /* Запрещает перенос строки */
+    overflow: hidden; /* Скрывает избыточный текст, который не помещается в блок */
+    text-overflow: ellipsis; /* Добавляет многоточие, когда текст обрезается */
+}
+
+
+.main_page_new_products-container p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.main_page_new_products-container p.price {
+    color: #ff4500; /* Цвет цены, можно изменить на свой выбор */
+    font-weight: bold;
+}
+
+.new_products-btn {
+    background-color: #E21837;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: auto;
+    width: 200px;
+    margin: 20px auto;
+    margin-top: 0;
+}
+
+/* Style for the news section */
+.main_page_news {
+    text-align: center;
+    padding: 40px; /* Измените отступы по своему усмотрению */
+}
+
+.main_page_news-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.main_page_news-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку при нехватке места */
+}
+
+.main_page_news-container div {
+    box-sizing: border-box;
+    width: 300px; /* Измените ширину блока новости по своему усмотрению */
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.main_page_news-container img {
+    max-width: 100%; /* Чтобы изображение не выходило за пределы блока */
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.main_page_news-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.main_page_news-container p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
