@@ -3,6 +3,12 @@ from .models import Table
 
 
 class TableFilterForm(forms.Form):
+    table_type = forms.ChoiceField(
+        choices=[('', 'All')] + Table.type_choices,
+        label='Table type',
+        required=False,
+    )
+    
     min_price = forms.IntegerField(
         label='Min price',
         required=False,
@@ -13,9 +19,4 @@ class TableFilterForm(forms.Form):
         required=False,
         min_value=0,
         initial=5000,
-    )
-    table_type = forms.ChoiceField(
-        choices=[('', 'All')] + Table.type_choices,
-        label='Table type',
-        required=False,
     )

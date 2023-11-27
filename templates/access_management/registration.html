@@ -1,17 +1,24 @@
-{% comment %} {% load static %} {% endcomment %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign up</title>
-    {% comment %} <link rel="stylesheet" href="{% static "registration.css" %}}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static "css/auth.css" %}">
   </head>
   <body>
     <form action="" method="POST">
-      <h1 class="registration-form-title">Sign up</h1>
-      {% csrf_token %} {{form}}
+      <h1 class="auth-form-title">Sign up</h1>
+      {% csrf_token %}
+      {{form.first_name}}
+      {{form.last_name}}
+      {{form.username}}
+      {{form.email}}
+      {{form.password}}
+      {{form.password_checking}}
       <button type="submit">Sign up</button>
+      <a href="login" class="have-account">Do you have account? Click here</a>
     </form>
   </body>
 </html>
