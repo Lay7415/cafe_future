@@ -4,15 +4,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Регистрация</title>
+    <title>Sign up</title>
     {% comment %} <link rel="stylesheet" href="{% static "registration.css"
     %}}"> {% endcomment %}
   </head>
   <body>
     <form action="" method="POST">
-      <h1 class="registration-form-title">Регистрация</h1>
+      <h1 class="registration-form-title">Sign up</h1>
       {% csrf_token %} {{form}}
-      <button type="submit">Регистрироваться</button>
+      <button type="submit">Sign up</button>
     </form>
   </body>
 </html>

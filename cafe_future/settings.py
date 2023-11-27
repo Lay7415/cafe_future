@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'access_management',
     'food',
     'tables',
+    'main'
 ]
 
 MIDDLEWARE = [

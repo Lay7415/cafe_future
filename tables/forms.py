@@ -4,18 +4,18 @@ from .models import Table
 
 class TableFilterForm(forms.Form):
     min_price = forms.IntegerField(
-        label='Минимальная цена',
+        label='Min price',
         required=False,
         min_value=0,
     )
     max_price = forms.IntegerField(
-        label='Максимальная цена',
+        label='Max price',
         required=False,
         min_value=0,
         initial=5000,
     )
     table_type = forms.ChoiceField(
-        choices=[('', 'Все')] + Table.type_choices,
-        label='Тип стола',
+        choices=[('', 'All')] + Table.type_choices,
+        label='Table type',
         required=False,
     )

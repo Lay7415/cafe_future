@@ -6,9 +6,9 @@ class Table(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Цена')
     table_number = models.PositiveIntegerField(verbose_name='Номер Столика')
     type_choices = [
-        ('just', 'Обычный'),
+        ('just', 'Just'),
         ('vip', 'VIP'),
-        ('booths', 'Кабинки')
+        ('booths', 'Booths')
     ]
     type = models.CharField(max_length=20,choices=type_choices, verbose_name='Тип')
     

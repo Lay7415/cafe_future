@@ -2,20 +2,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Забронированный стол</title>
+    <title>Reserved Table</title>
 </head>
 <body>
-    <h1>Забронированный стол</h1>
+    <h1>Reserved Table</h1>
 
-    <h2>Стол №{{ table.table_number }}</h2>
+    <h2>Table №{{ table.table_number }}</h2>
     {% if reserved_tables %}
         <ul>
             {% for reserved_table in reserved_tables %}
-                <li>Бронь №{{ reserved_table.id }} - {{ reserved_table.data }} - {{ reserved_table.duration }}</li>
+                <li>Recervation №{{ reserved_table.id }} - {{ reserved_table.data }} - {{ reserved_table.duration }}</li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>На указанную дату нет броней для стола №{{ table.table_number }}</p>
+        <p>On the specified date there is no armor for the table №{{ table.table_number }}</p>
     {% endif %}
 </body>
 </html>

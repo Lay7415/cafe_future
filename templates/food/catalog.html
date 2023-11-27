@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог еды</title>
+    <title>Food Catalog</title>
 </head>
 <body>
 
-<h1>Каталог еды</h1>
+<h1>Food Catalog</h1>
 
 <form method="GET" action="{% url 'catalog' %}">
     {{ form.as_p }}
-    <button type="submit">Отфильтровать</button>
+    <button type="submit">filter</button>
 </form>
 
 {% for food in foods %}
@@ -20,7 +20,7 @@
         <img src="{{ food.photo.url }}" alt="{{ food.description }}">
         <h2>{{ food.name }}</h2>
         <p>{{ food.composition }}</p>
-        <p>Цена: {{ food.price }}</p>
+        <p>Price: {{ food.price }}</p>
     </div>
 {% endfor %}
 
