@@ -1,0 +1,21 @@
+<!-- Ваш файл templates/reserved_tables.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Забронированный стол</title>
+</head>
+<body>
+    <h1>Забронированный стол</h1>
+
+    <h2>Стол №{{ table.table_number }}</h2>
+    {% if reserved_tables %}
+        <ul>
+            {% for reserved_table in reserved_tables %}
+                <li>Бронь №{{ reserved_table.id }} - {{ reserved_table.data }} - {{ reserved_table.duration }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>На указанную дату нет броней для стола №{{ table.table_number }}</p>
+    {% endif %}
+</body>
+</html>

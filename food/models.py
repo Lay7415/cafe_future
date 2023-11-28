@@ -1,5 +1,3 @@
-# Ваш_проект/ваше_приложение/models.py
-
 from django.db import models
 
 class FoodType(models.Model):
