@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'access_management',
     'food',
-    'food_news',  # Keep the 'food_news' app
-    'tables',     # Include the 'tables' app
+    'tables',
+    'main',
+    'food_news',
 ]
 
 # ... (remaining code)

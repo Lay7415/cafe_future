@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_page-header {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logotype {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.main_page-header-menu {
+    display: flex;
+    margin-left: auto;
+}
+
+.main_page-header-menu-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.main_page-header-menu-register-btn {
+    background-color: #D22525;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.main_page-footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main_page-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.main_page-footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-info {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    margin: 0 10px;
+}
+
+.social-icons {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.social-icon img {
+    width: 30px;
+    /* Размер иконок социальных сетей */
+    height: 30px;
+    /* Размер иконок социальных сетей */
+    margin: 0 5px;
+}
+
+.footer-copyright {
+    font-size: 12px;
+}
+
+/* Updated style for the footer */
+.main_page-footer {
+    background-color: #000000;
+    color: white;
+    padding: 20px;
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main_page-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.main_page-footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-info {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-links,
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.footer-links a,
+.social-icon img {
+    margin: 0 10px;
+}
+
+.footer-copyright {
+    font-size: 12px;
+}

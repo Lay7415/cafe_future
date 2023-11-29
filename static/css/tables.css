@@ -1,0 +1,99 @@
+/* Стили для Food Catalog */
+
+/* Контейнер для каталога */
+.food-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 40px;
+    min-height: 100vh;
+}
+
+/* Стили для формы фильтрации */
+.filter-form {
+    max-width: 300px;
+    margin-right: 20px;
+}
+
+.filter-form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.filter-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-form label {
+    margin-bottom: 8px;
+}
+
+.filter-form input,
+.filter-form select {
+    padding: 8px;
+    margin-bottom: 12px;
+}
+
+.filter-form button {
+    background-color: #D22525;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-form button:hover {
+    background-color: #a71e1e;
+}
+
+/* Стили для карточек продуктов */
+.table-card {
+    box-sizing: border-box;
+    width: 200px;
+    /* Измените ширину блока продукта по своему усмотрению */
+    margin: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    box-shadow: 0 0 40px rgb(69, 69, 69);
+    max-height: 300px;
+}
+
+.table-card img {
+    max-width: 100%;
+    /* Чтобы изображение не выходило за пределы блока */
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 10px;
+}
+
+.table-card h2 {
+    font-size: 16px;
+
+    /* Добавляет многоточие, когда текст обрезается */
+}
+
+.table-card p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin: 20px;
+    margin-top: 0;
+}
+
+.table-card-btn {
+    background-color: #E21837;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: auto;
+    width: 150px;
+    margin: 20px auto;
+    margin-top: 0;
+}

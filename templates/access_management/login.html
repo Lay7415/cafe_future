@@ -1,19 +1,20 @@
-{% comment %} {% load static %} {% endcomment %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Аунтификация</title>
-    {% comment %} <link rel="stylesheet" href="{% static "login.css"
-    %}}"> {% endcomment %}
+    <title>Sign in</title>
+    <link rel="stylesheet" href="{% static "css/auth.css" %}">
   </head>
   <body>
     <form action="" method="POST">
-      <h1 class="login-form-title">Аунтификация</h1>
-      {% csrf_token %} 
-      {{form}}
-      <button type="submit">Войти</button>
+      <h1 class="auth-form-title">Sign in</h1>
+      {% csrf_token %}
+      {{form.email}}
+      {{form.password}}
+      <button type="submit">Sign in</button>
+      <a href="registration" class="have-account">Do you not have account? Click here</a>
     </form>
   </body>
 </html>

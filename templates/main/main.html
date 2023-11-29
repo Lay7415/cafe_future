@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main</title>
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
+    <link rel="stylesheet" href="{% static "css/main_layout.css" %}">
+  </head>
+  <body>
+    {% include "layouts/header.html" %}
+    <main class="main_page-main">
+      <section class="main_page-introduction">
+        <p class="main_page-introduction_title">
+          Food fills the soul's emptiness like nothing else
+        </p>
+
+      </section>
+      <section class="main_page-search">
+        <p class="main_page-search_title">
+          USE THE SEARCH TO QUICKLY FIND IN OUR MENU
+        </p>
+        <form class="main_page-search_container">
+          <input
+            type="text"
+            class="main_page-search_input"
+            placeholder="Search..."
+          />
+          <button type="submit" class="main_page-search_btn">Search</button>
+        </form>
+      </section>
+      <seciton class="main_page_new_products">
+        <h1 class="main_page_new_products-title">New Products</h1>
+        <div class="main_page_new_products-container">
+          {% for food in foods %}
+          <div>
+            <img src="{{ food.photo.url }}" alt="{{ food.description }}" />
+            <h2>{{ food.name }}</h2>
+            <p>Price: {{ food.price }}</p>
+            <button class="new_products-btn">Buy it</button>
+          </div>
+          {% endfor %}
+        </div>
+      </seciton>
+      {% comment %} <seciton class="main_page_news">
+        <h1 class="main_page_news-title">News</h1>
+        <div class="main_page_news-container">
+          {% for one_news in news %}
+          <div>
+            <img src="{{ one_news.photo.url }}" />
+            <h2>{{ one_news.name }}</h2>
+            <p>{{ one_news.description }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </seciton> {% endcomment %}
+    </main>
+    {% include "layouts/footer.html" %}
+  </body>
+</html>

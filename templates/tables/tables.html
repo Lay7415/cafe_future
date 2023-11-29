@@ -1,44 +1,37 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
     <title>Отфильтрованные столы</title>
-    <style>
-      .table-card {
-        border: 1px solid #ddd;
-        padding: 10px;
-        margin: 10px;
-        width: 200px;
-        text-align: center;
-      }
-
-      .table-card img {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 10px;
-      }
-    </style>
+    <link rel="stylesheet" href="{% static "css/main_layout.css" %}"> 
+    <link rel="stylesheet" href="{% static "css/tables.css" %}">
   </head>
   <body>
-    <h1>Отфильтрованные столы</h1>
+    {% include "layouts/header.html" %}
 
-    <form method="GET" action="{% url 'tables' %}">
-      {{ form.as_p }}
-      <button type="submit">Применить фильтр</button>
-    </form>
+    <!-- HTML с использованием классов -->
+    <div class="food-container">
+      <div class="filter-form">
+        <h1>Food Catalog</h1>
+        <form method="GET" action="{% url 'tables' %}">
+          {% csrf_token %}
+          {{form}}
+          <button type="submit">Filter</button>
+        </form>
+      </div>
 
-    {% if tables %}
-    <h2>Результаты:</h2>
-    <div class="table-cards">
       {% for table in tables %}
-      <div class="table-card" onclick="redirectToReserved({{ table.id }})">
-        <img src="{{ table.photo.url }}" alt="Table Photo" />
-        <p>Номер стола: {{ table.table_number }}</p>
-        <p>Цена: {{ table.price }}</p>
-        <p>Тип: {{ table.get_type_display }}</p>
+      <div onclick="redirectToReserved({{ table.id }})" class="table-card">
+        <img src="{{ table.photo.url }}" alt="{{ table.description }}" />
+        <h2>{{ table.name }}</h2>
+        {% comment %} <p>{{ table.composition }}</p> {% endcomment %}
+        <p>Price: {{ table.price }}</p>
+        <p>Type: {{ table.type }}</p>
       </div>
       {% endfor %}
     </div>
-    {% endif %}
+
+    {% include "layouts/footer.html" %}
     <script>
       function redirectToReserved(tableId) {
         var url = "{% url 'reserved' 0 %}".replace("0", tableId);

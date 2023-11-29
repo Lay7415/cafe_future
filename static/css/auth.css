@@ -1,0 +1,78 @@
+/* Стили для регистрации */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+}
+
+.auth-form-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form button {
+    background-color: #D22525;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+form button:hover {
+    background-color: rgb(54, 126, 58);
+}
+
+/* Дополнительные стили для полей ввода */
+form input {
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Опциональные стили для адаптивности */
+
+.have-account {
+    text-decoration: none;
+    color: black;
+    margin-top: 20px;
+}
+
+.have-account:hover {
+    color: rgb(255, 98, 0);
+}
+
+@media (max-width: 600px) {
+    form {
+        width: 80%;
+    }
+}

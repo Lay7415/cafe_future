@@ -7,8 +7,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('client/access_management/', include('access_management.urls')),
     path('client/food/', include('food.urls')),
+    path('client/tables/', include('tables.urls')),
+    path('', include('main.urls')),
     path('', include('food_news.urls')),  # Keep the 'food_news' URL
-    path('client/tables/', include('tables.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
