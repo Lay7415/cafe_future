@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# ... (previous code)
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,8 +44,11 @@ INSTALLED_APPS = [
     'access_management',
     'food',
     'tables',
-    'main'
+    'main',
+    'food_news',
 ]
+
+# ... (remaining code)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
