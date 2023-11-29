@@ -1,21 +1,32 @@
-<!-- Ваш файл templates/reserved_tables.html -->
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Reserved Table</title>
+    <link rel="stylesheet" type="text/css" href="{% static "css/reserved_tables.css" %}">
 </head>
-<body>
-    <h1>Reserved Table</h1>
-
-    <h2>Table №{{ table.table_number }}</h2>
-    {% if reserved_tables %}
-        <ul>
-            {% for reserved_table in reserved_tables %}
-                <li>Recervation №{{ reserved_table.id }} - {{ reserved_table.data }} - {{ reserved_table.duration }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>On the specified date there is no armor for the table №{{ table.table_number }}</p>
-    {% endif %}
+<body class="reserved-tables-body">
+    <div class="reserved-tables-content">
+        <div class="reserved-tables-info">
+            <h1 class="reserved-tables-title">Reserved Table</h1>
+            <h2 class="table-number">Table №{{ table.table_number }}</h2>
+            <img src="{{table.image}}" alt="" class="recerved_table-image" />
+            <p class="recerved_table-price"></p>
+            {% if reserved_tables %}
+                <ul class="reservation-list">
+                    {% for reserved_table in reserved_tables %}
+                        <li class="reservation-item">
+                            Recervation №{{ reserved_table.id }} - {{ reserved_table.data }} - {{ reserved_table.duration }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="no-reservation">
+                    On the specified date there is no armor for the table №{{ table.table_number }}
+                </p>
+            {% endif %}
+        </div>
+        <form action="" method="post" class="recerved-table"></form>
+    </div>
 </body>
 </html>

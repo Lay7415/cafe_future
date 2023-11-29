@@ -6,6 +6,7 @@
     flex-wrap: wrap;
     gap: 20px;
     margin: 40px;
+    min-height: 100vh;
 }
 
 /* Стили для формы фильтрации */
@@ -60,6 +61,7 @@
     background-color: black;
     color: white;
     box-shadow: 0 0 40px rgb(69, 69, 69);
+    max-height: 300px;
 }
 
 .table-card img {

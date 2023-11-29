@@ -25,8 +25,9 @@ def tables_view(request):
 
 
 def reserved_tables(request, table_id):
+    table = Table.objects.filter(id=table_id)
     reserved_tables = ReservedTable.objects.filter(table__id=table_id)
-    context = {'reserved_tables': reserved_tables}
+    context = {'reserved_tables': reserved_tables, "table": table}
     
     
     return render(request, 'tables/reserved_tables.html', context)

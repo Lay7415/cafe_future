@@ -43,7 +43,7 @@
           {% endfor %}
         </div>
       </seciton>
-      <seciton class="main_page_news">
+      {% comment %} <seciton class="main_page_news">
         <h1 class="main_page_news-title">News</h1>
         <div class="main_page_news-container">
           {% for one_news in news %}
@@ -54,7 +54,7 @@
           </div>
           {% endfor %}
         </div>
-      </seciton>
+      </seciton> {% endcomment %}
     </main>
     {% include "layouts/footer.html" %}
   </body>
