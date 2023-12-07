@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from .models import User
 
 
 class RegistrationForm(UserCreationForm):
@@ -27,6 +28,20 @@ class RegistrationForm(UserCreationForm):
         'class': 'authorization-field',
         'placeholder': 'Password checking'
     }))
+    
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name',
+                  'last_name', 'password1', 'password2']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].error_messages = {
+            'unique': 'Пользователь с таким именем уже существует.'}
+        self.fields['email'].error_messages = {
+            'unique': 'Пользователь с таким Email уже существует.'}
+        self.fields['password2'].error_messages = {
+            'password_mismatch': 'Пароли не совпадают.'}
 
 
 class LoginForm(forms.Form):
@@ -38,3 +53,11 @@ class LoginForm(forms.Form):
         'class': 'authorization-field',
         'placeholder': 'Password'
     }))
+    
+    def clean(self):
+        clean_data = super().clean()
+        email = clean_data.get('email')
+        existing_users = User.objects.filter(email=email)
+        if not existing_users.exists():
+            self.add_error('email', 'Пользователь с этим Email не существует')
+        return clean_data
