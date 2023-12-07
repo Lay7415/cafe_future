@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import RegistrationForm, LoginForm
 from .models import User
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.hashers import check_password
+
 
 def registration_view(request):
     if request.method == 'POST':
@@ -29,7 +31,8 @@ def login_view(request):
             
             user = User.objects.get(email=email)
             
-            if user.check_password(password):
+            print(check_password(password, user.password))
+            if check_password(password, user.password):
                 authenticate(request, email=email)
                 login(request, user)
                 return redirect('registration')
