@@ -54,10 +54,10 @@ class LoginForm(forms.Form):
         'placeholder': 'Password'
     }))
     
-    def clean(self):
-        clean_data = super().clean()
-        email = clean_data.get('email')
-        existing_users = User.objects.filter(email=email)
-        if not existing_users.exists():
-            self.add_error('email', 'Пользователь с этим Email не существует')
-        return clean_data
+    # def clean(self):
+    #     clean_data = super().clean()
+    #     email = clean_data.get('email')
+    #     existing_users = User.objects.filter(email=email)
+    #     if not existing_users.exists():
+    #         self.add_error('email', 'Пользователь с этим Email не существует')
+    #     return clean_data
