@@ -122,10 +122,12 @@
 }
 
 .main_page_new_products-container img {
-    max-width: 100%;
-    /* Чтобы изображение не выходило за пределы блока */
-    border-radius: 5px 5px 0 0;
+    border-radius: 5px;
     margin-bottom: 10px;
+    object-fit: cover;
+    width: 300px;
+    height: 200px;
+    border-radius: 5px 5px 0 0;
 }
 
 .main_page_new_products-container h2 {
@@ -146,7 +148,6 @@
 
 .main_page_new_products-container p.price {
     color: #ff4500;
-    /* Цвет цены, можно изменить на свой выбор */
     font-weight: bold;
 }
 
@@ -164,11 +165,9 @@
     margin-top: 0;
 }
 
-/* Style for the news section */
 .main_page_news {
     text-align: center;
     padding: 40px;
-    /* Измените отступы по своему усмотрению */
 }
 
 .main_page_news-title {
@@ -181,13 +180,11 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    /* Позволяет элементам переноситься на следующую строку при нехватке места */
 }
 
 .main_page_news-container div {
     box-sizing: border-box;
     width: 300px;
-    /* Измените ширину блока новости по своему усмотрению */
     padding: 20px;
     margin: 20px;
     border: 1px solid #ccc;
@@ -196,8 +193,8 @@
 }
 
 .main_page_news-container img {
-    max-width: 100%;
-    /* Чтобы изображение не выходило за пределы блока */
+    min-width: 300px;
+    min-height: 200px;
     border-radius: 5px;
     margin-bottom: 10px;
 }

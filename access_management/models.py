@@ -6,9 +6,11 @@ class User(AbstractUser):
     username = models.CharField(unique=True, max_length=100, verbose_name='Имя пользователя')
     first_name = models.CharField(max_length=100, verbose_name='Имя')
     last_name = models.CharField(max_length=100, verbose_name='Фамилия')
+    password1 = models.CharField(max_length=30, verbose_name='Пароль1')
+    password2 = models.CharField(max_length=30, verbose_name='Пароль2')
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
+    # USERNAME_FIELD = 'email'
+    # REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
     def __str__(self):
         return self.email
