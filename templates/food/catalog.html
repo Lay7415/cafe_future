@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Food Catalog</title>
-    <link rel="stylesheet" href="{% static "css/main_layout.css" %}"> 
-    <link rel="stylesheet" href="{% static "css/catalog.css" %}">
+    <link rel="stylesheet" href="{% static "css/main_layout.css" %}"> <link
+    rel="stylesheet" href="{% static "css/catalog.css" %}">
+    <script defer src="{% static 'js/main.js' %}"></script>
   </head>
   <body>
     {% include "layouts/header.html" %}
@@ -17,8 +18,7 @@
       <div class="filter-form">
         <h1>Food Catalog</h1>
         <form method="GET" action="{% url 'catalog' %}">
-          {% csrf_token %}
-          {{form}}
+          {% csrf_token %} {{form}}
           <button type="submit">Filter</button>
         </form>
       </div>
@@ -27,9 +27,40 @@
       <div class="food-card">
         <img src="{{ food.photo.url }}" alt="{{ food.description }}" />
         <h2>{{ food.name }}</h2>
-        {% comment %} <p>{{ food.composition }}</p> {% endcomment %}
+        {% comment %}
+        <p>{{ food.composition }}</p>
+        {% endcomment %}
         <p>Price: {{ food.price }}</p>
-        <button class="food-card-btn">Buy it</button>
+        {% if auth %} {% if food.inBasket %}
+        <h1
+          style="display: block"
+          class="added-in-basket added-in-basket-{{food.id}}"
+        >
+          added in basket
+        </h1>
+        <button
+          style="display: none"
+          class="food-card-btn"
+          data-food-id="{{ food.id }}"
+        >
+          add to basket
+        </button>
+        {% else %}
+        <h1
+          style="display: none"
+          class="added-in-basket added-in-basket-{{food.id}}"
+        >
+          added in basket
+        </h1>
+        <button
+          style="display: block"
+          class="food-card-btn"
+          data-food-id="{{ food.id }}"
+        >
+          add to basket
+        </button>
+        {% endif %} 
+        {% endif %}
       </div>
       {% endfor %}
     </div>
@@ -37,4 +68,7 @@
     {% include "layouts/footer.html" %}
   </body>
 </html>
-{% comment %} <div class="table-card" onclick="redirectToReserved({{ table.id }})"> {% endcomment %}
+{% comment %}
+<div class="table-card" onclick="redirectToReserved({{ table.id }})">
+  {% endcomment %}
+</div>

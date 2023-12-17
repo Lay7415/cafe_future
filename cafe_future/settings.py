@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'tables',
     'main',
     'food_news',
+    'basket'
 ]
 
 # ... (remaining code)
@@ -61,7 +62,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'cafe_future.urls'
-
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
 TEMPLATES = [

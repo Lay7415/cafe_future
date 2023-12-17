@@ -101,3 +101,8 @@
     margin: 20px auto;
     margin-top: 0;
 }
+
+.added-in-basket {
+    font-size: 20px;
+    background-color: #ff4500;
+}

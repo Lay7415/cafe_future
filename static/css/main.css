@@ -132,6 +132,7 @@
 
 .main_page_new_products-container h2 {
     font-size: 16px;
+    padding: 0 20px;
     white-space: nowrap;
     /* Запрещает перенос строки */
     overflow: hidden;
@@ -254,6 +255,11 @@
 
 .footer-copyright {
     font-size: 12px;
+}
+
+.added-in-basket {
+    font-size: 20px;
+    background-color: #ff4500;
 }
 
 /* Updated style for the footer */

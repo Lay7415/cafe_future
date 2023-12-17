@@ -1,10 +1,16 @@
 <header class="main_page-header">
-    <img src="./static/images/icon.svg" alt="" class="logotype" />
+    <img src="http://127.0.0.1:8000/static/images/icon.svg" alt="" class="logotype" />
     <div class="main_page-header-menu">
       <a href="{% url "main" %}" class="main_page-header-menu-btn">HOME</a>
       <a href="{% url "catalog" %}" class="main_page-header-menu-btn">MENU</a>
       <a href="{% url "tables" %}" class="main_page-header-menu-btn">TABLES</a>
-      {% comment %} <a href="{% url "" %}" class="main_page-header-menu-btn">CONTACT US</a> {% endcomment %}
+      {% if auth %}
+      <a href="{% url "basket" %}" class="main_page-header-menu-btn">BASKET</a>
+      {% endif %}
+      {% if auth %}
+      <a href="{% url "logout" %}" class="main_page-header-menu-register-btn">Logout</a>
+      {% else %}
       <a href="{% url "registration" %}" class="main_page-header-menu-register-btn">Registration</a>
+      {% endif %}
     </div>
-  </header>
+</header>
