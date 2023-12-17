@@ -23,15 +23,14 @@
         </form>
       </div>
 
-      {% for food in foods %}
+     {% for food in foods %}
       <div class="food-card">
-        <img src="{{ food.photo.url }}" alt="{{ food.description }}" />
+        <img src="{{ food.photo.url }}" alt="{{ food.name }}" />
         <h2>{{ food.name }}</h2>
-        {% comment %} <p>{{ food.composition }}</p> {% endcomment %}
         <p>Price: {{ food.price }}</p>
-        <button class="food-card-btn">Buy it</button>
+        <a href="{% url 'food_detail' food_id=food.id %}" class="food-card-btn">Buy it</a>
       </div>
-      {% endfor %}
+   {% endfor %}
     </div>
 
     {% include "layouts/footer.html" %}

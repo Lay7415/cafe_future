@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import FoodFilterForm
 from .models import Food
 
@@ -33,3 +33,7 @@ def catalog_view(request):
             foods = search_results
 
     return render(request, 'food/catalog.html', {'form': form, 'foods': foods})
+
+def food_detail_view(request, food_id):
+    food = get_object_or_404(Food, id=food_id)
+    return render(request, 'food/food_detail.html', {'food': food})
