@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'tables',
     'main',
     'food_news',
-    'basket'
+    'basket',
+    'user_profile'
 ]
 
 # ... (remaining code)

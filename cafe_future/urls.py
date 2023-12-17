@@ -9,7 +9,9 @@ urlpatterns = [
     path('client/food/', include('food.urls')),
     path('client/tables/', include('tables.urls')),
     path('', include('main.urls')),
-    path('', include('food_news.urls')),  # Keep the 'food_news' URL
+    path('', include('food_news.urls')),
+    path('', include('user_profile.urls'))
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
