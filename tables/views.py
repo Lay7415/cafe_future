@@ -3,6 +3,7 @@ from .models import Table, ReservedTable
 from .forms import TableFilterForm
 
 def tables_view(request):
+    auth = request.user.id
     form = TableFilterForm(request.GET)
     tables = Table.objects.all()
 
@@ -21,13 +22,14 @@ def tables_view(request):
             tables = tables.filter(price__lte=max_price)
 
 
-    return render(request, 'tables/tables.html', {'form': form, 'tables': tables})
+    return render(request, 'tables/tables.html', {'form': form, 'tables': tables, 'auth': auth})
 
 
 def reserved_tables(request, table_id):
+    auth = request.user.id
     table = Table.objects.filter(id=table_id)
     reserved_tables = ReservedTable.objects.filter(table__id=table_id)
-    context = {'reserved_tables': reserved_tables, "table": table}
+    context = {'reserved_tables': reserved_tables, "table": table, 'auth': auth}
     
     
     return render(request, 'tables/reserved_tables.html', context)

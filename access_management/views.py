@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm, LoginForm
 from .models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import check_password
 
 
@@ -16,7 +16,8 @@ def registration_view(request):
             last_name = form.cleaned_data['last_name']
             
             user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
-            return redirect('login')
+            login(request, user)
+            return redirect('main')
     else:
         form = RegistrationForm()
     
@@ -31,13 +32,16 @@ def login_view(request):
             
             user = User.objects.get(email=email)
             
-            print(check_password(password, user.password))
             if check_password(password, user.password):
                 authenticate(request, email=email)
                 login(request, user)
-                return redirect('registration')
+                return redirect('main')
             
     else:
         form = LoginForm()
     
     return render(request, 'access_management/login.html', {'form': form})
+
+def logoutView(request):
+    logout(request)
+    return redirect('main')

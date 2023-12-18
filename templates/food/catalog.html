@@ -6,34 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Food Catalog</title>
-    <link rel="stylesheet" href="{% static "css/main_layout.css" %}"> 
-    <link rel="stylesheet" href="{% static "css/catalog.css" %}">
+    <link rel="stylesheet" href="{% static "css/main_layout.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/catalog.css" %}"/>
+    <script defer src="{% static 'js/main.js' %}"></script>
   </head>
   <body>
     {% include "layouts/header.html" %}
+    <main>
 
-    <!-- HTML с использованием классов -->
+      
+      <!-- HTML с использованием классов -->
     <div class="food-catalog-container">
       <div class="filter-form">
         <h1>Food Catalog</h1>
         <form method="GET" action="{% url 'catalog' %}">
-          {% csrf_token %}
-          {{form}}
+          {% csrf_token %} {{form}}
           <button type="submit">Filter</button>
         </form>
       </div>
-
-     {% for food in foods %}
+      
+      {% for food in foods %}
       <div class="food-card">
         <img src="{{ food.photo.url }}" alt="{{ food.name }}" />
-        <h2>{{ food.name }}</h2>
+        <a href="{% url 'food_detail' food_id=food.id %}" class="food-card-btn">{{ food.name }}</a>
         <p>Price: {{ food.price }}</p>
-        <a href="{% url 'food_detail' food_id=food.id %}" class="food-card-btn">Buy it</a>
+        {% if auth %}
+        {% if food.inBasket %}
+        <h1 style="display: block" class="added-in-basket added-in-basket-{{food.id}}" data-food-id="{{ food.id }}">added in basket</h1>
+        <button style="display: none" class="new_products-btn new_products-btn-{{food.id}}"  data-food-id="{{ food.id }}" >add to basket</button>
+        {% else %}
+        <h1 style="display: none" class="added-in-basket added-in-basket-{{food.id}}" data-food-id="{{ food.id }}">added in basket</h1>
+        <button style="display: block" class="new_products-btn new_products-btn-{{food.id}}"  data-food-id="{{ food.id }}" >add to basket</button>
+        {% endif %}
+        {% endif %}
       </div>
-   {% endfor %}
-    </div>
-
-    {% include "layouts/footer.html" %}
-  </body>
-</html>
-{% comment %} <div class="table-card" onclick="redirectToReserved({{ table.id }})"> {% endcomment %}
+      {% endfor %}
+      
+    </main>
+      {% include "layouts/footer.html" %}
+    </body>
+    </html>
+</div>

@@ -48,11 +48,9 @@
     background-color: #a71e1e;
 }
 
-/* Стили для карточек продуктов */
 .food-card {
     box-sizing: border-box;
     width: 200px;
-    /* Измените ширину блока продукта по своему усмотрению */
     margin: 20px;
     border-radius: 10px;
     text-align: center;
@@ -61,7 +59,7 @@
     background-color: black;
     color: white;
     box-shadow: 0 0 40px rgb(69, 69, 69);
-    max-height: 400px;
+    max-height: 350px;
 }
 
 .food-card img {
@@ -88,7 +86,12 @@
     margin-top: 0;
 }
 
-.food-card-btn {
+.added-in-basket {
+    font-size: 20px;
+    background-color: #ff4500;
+}
+
+.new_products-btn {
     background-color: #E21837;
     color: white;
     border: none;
@@ -97,7 +100,7 @@
     border-radius: 5px;
     font-size: 16px;
     margin-top: auto;
-    width: 150px;
+    width: 200px;
     margin: 20px auto;
     margin-top: 0;
 }

@@ -5,8 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main</title>
-    <link rel="stylesheet" href="{% static "css/main.css" %}">
-    <link rel="stylesheet" href="{% static "css/main_layout.css" %}">
+    <link rel="stylesheet" href="{% static "css/main.css" %}"> <link
+    rel="stylesheet" href="{% static "css/main_layout.css" %}">
+    <script defer src="{% static "js/main.js" %}"></script>
   </head>
   <body>
     {% include "layouts/header.html" %}
@@ -15,19 +16,21 @@
         <p class="main_page-introduction_title">
           Food fills the soul's emptiness like nothing else
         </p>
-
       </section>
       <section class="main_page-search">
         <p class="main_page-search_title">
           USE THE SEARCH TO QUICKLY FIND IN OUR MENU
         </p>
         <form class="main_page-search_container">
-          <input
-            type="text"
-            class="main_page-search_input"
-            placeholder="Search..."
-          />
+          {% csrf_token %}
+          {{form}}
           <button type="submit" class="main_page-search_btn">Search</button>
+                    {% for food in searchFoods %}
+          <div>
+            <h2>{{ food.name }}</h2>
+          </div>
+          {% endfor %}
+
         </form>
       </section>
       <seciton class="main_page_new_products">
@@ -38,12 +41,21 @@
             <img src="{{ food.photo.url }}" alt="{{ food.description }}" />
             <h2>{{ food.name }}</h2>
             <p>Price: {{ food.price }}</p>
-            <button class="new_products-btn">Buy it</button>
+            {% if auth %}
+            {% if food.inBasket %}
+            <h1 style="display: block" class="added-in-basket added-in-basket-{{food.id}}" data-food-id="{{ food.id }}">added in basket</h1>
+            <button style="display: none" class="new_products-btn new_products-btn-{{food.id}}"  data-food-id="{{ food.id }}" >add to basket</button>
+            {% else %}
+            <h1 style="display: none" class="added-in-basket added-in-basket-{{food.id}}" data-food-id="{{ food.id }}">added in basket</h1>
+            <button style="display: block" class="new_products-btn new_products-btn-{{food.id}}"  data-food-id="{{ food.id }}" >add to basket</button>
+            {% endif %}
+            {% endif %}
           </div>
           {% endfor %}
         </div>
       </seciton>
-      {% comment %} <seciton class="main_page_news">
+      {% comment %}
+      <seciton class="main_page_news">
         <h1 class="main_page_news-title">News</h1>
         <div class="main_page_news-container">
           {% for one_news in news %}
@@ -54,7 +66,8 @@
           </div>
           {% endfor %}
         </div>
-      </seciton> {% endcomment %}
+      </seciton>
+      {% endcomment %}
     </main>
     {% include "layouts/footer.html" %}
   </body>
