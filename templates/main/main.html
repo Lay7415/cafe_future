@@ -22,12 +22,15 @@
           USE THE SEARCH TO QUICKLY FIND IN OUR MENU
         </p>
         <form class="main_page-search_container">
-          <input
-            type="text"
-            class="main_page-search_input"
-            placeholder="Search..."
-          />
+          {% csrf_token %}
+          {{form}}
           <button type="submit" class="main_page-search_btn">Search</button>
+                    {% for food in searchFoods %}
+          <div>
+            <h2>{{ food.name }}</h2>
+          </div>
+          {% endfor %}
+
         </form>
       </section>
       <seciton class="main_page_new_products">

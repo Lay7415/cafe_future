@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import FoodFilterForm
 from .models import Food
 from basket.models import BasketFood, BasketModel
