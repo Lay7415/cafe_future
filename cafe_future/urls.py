@@ -10,7 +10,8 @@ urlpatterns = [
     path('client/tables/', include('tables.urls')),
     path('', include('main.urls')),
     path('', include('food_news.urls')),
-    path('', include('user_profile.urls'))
+    path('', include('user_profile.urls')),
+    path('stripe/', include('stripe_payment.urls')),
 
 ]
 
