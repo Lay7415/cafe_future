@@ -10,23 +10,26 @@
         <div class="reserved-tables-info">
             <h1 class="reserved-tables-title">Reserved Table</h1>
             <h2 class="table-number">Table №{{ table.table_number }}</h2>
-            <img src="{{table.image}}" alt="" class="recerved_table-image" />
+            <img src="{{table.photo.url}}" alt="" class="recerved_table-image" />
             <p class="recerved_table-price"></p>
             {% if reserved_tables %}
-                <ul class="reservation-list">
+            <ul class="reservation-list">
                     {% for reserved_table in reserved_tables %}
                         <li class="reservation-item">
                             Recervation №{{ reserved_table.id }} - {{ reserved_table.data }} - {{ reserved_table.duration }}
                         </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p class="no-reservation">
-                    On the specified date there is no armor for the table №{{ table.table_number }}
-                </p>
-            {% endif %}
-        </div>
-        <form action="" method="post" class="recerved-table"></form>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="no-reservation">
+                        On the specified date there is no armor for the table №{{ table.table_number }}
+                    </p>
+                    {% endif %}
+                </div>
+        <form action="" method="post" class="recerved-table">
+            <h2 class="table-number"> Price{{ table.price }}</h2>
+            <button type="submit">Pay it</button>
+        </form>
     </div>
 </body>
 </html>

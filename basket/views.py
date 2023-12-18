@@ -19,7 +19,7 @@ def basketView(request):
                 total_amount += food.amount
                 total_quantity += food.quantity
             context = {"foods": foods, 'auth': user_id,
-                       "total_quantity": total_quantity, "total_amount": total_amount}
+                       "total_quantity": total_quantity, "total_amount": total_amount, "basket": basket}
             return render(request, 'basket/index.html', context)
     except Exception as error:
         return HttpResponseBadRequest(error)

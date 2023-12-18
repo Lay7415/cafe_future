@@ -38,6 +38,7 @@
         <button style="display: block" class="new_products-btn new_products-btn-{{food.id}}"  data-food-id="{{ food.id }}" >add to basket</button>
         {% endif %}
         {% endif %}
+        <a href="{% url 'food_detail' food_id=food.id %}" class="food-card-btn">More</a>
       </div>
       {% endfor %}
       

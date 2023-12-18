@@ -27,7 +27,7 @@ def tables_view(request):
 
 def reserved_tables(request, table_id):
     auth = request.user.id
-    table = Table.objects.filter(id=table_id)
+    table = Table.objects.get(id=table_id)
     reserved_tables = ReservedTable.objects.filter(table__id=table_id)
     context = {'reserved_tables': reserved_tables, "table": table, 'auth': auth}
     
