@@ -1,72 +1,39 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{ food.name }} - Cafe Name</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa; /* Light gray background */
-            color: #343a40; /* Dark text color */
-        }
-
-        header {
-            background-color: #007bff; /* Header background color */
-            color: #fff; /* Header text color */
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        h1 {
-            color: #007bff; /* Cafe name color */
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
-
-        .food-info {
-            background-color: #ffffff; /* White container background */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
-            padding: 20px;
-            margin: 20px;
-        }
-
-        p {
-            color: #495057; /* Dark gray text color */
-        }
-
-        footer {
-            background-color: #343a40; /* Footer background color */
-            color: #fff; /* Footer text color */
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
+    <link rel="stylesheet" href="{% static "css/main_layout.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/food-detail.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/catalog.css" %}"/>
+    <script defer src="{% static 'js/main.js' %}"></script>
+  </head>
+  <body>
     {% include "layouts/header.html" %}
-    <div class="food-info">
+    <main>
+      <div class="food-info">
         {% block content %}
-            <h1>{{ food.name }}</h1>
-            <img src="{{ food.photo.url }}" alt="{{ food.name }}" />
-            <p>Composition: {{ food.composition }}</p>
-            <p>Price: {{ food.price }}</p>
-            <!-- Add any other details you want to display -->
+        <h1>{{ food.name }}</h1>
+        <img src="{{ food.photo.url }}" alt="{{ food.name }}" />
+        <p>Composition: {{ food.composition }}</p>
+        <p>Price: {{ food.price }}</p>
+        {% if food.inBasket %}
+        <h1 style="display: block" class="added-in-basket added-in-basket-{{food.id}}" data-food-id="{{ food.id }}">added in basket</h1>
+        <button style="display: none" class="new_products-btn new_products-btn-{{food.id}}"  data-food-id="{{ food.id }}" >add to basket</button>
+        {% else %}
+        <h1 style="display: none" class="added-in-basket added-in-basket-{{food.id}}" data-food-id="{{ food.id }}">added in basket</h1>
+        <button style="display: block" class="new_products-btn new_products-btn-{{food.id}}"  data-food-id="{{ food.id }}" >add to basket</button>
+        {% endif %}
+        <!-- Add any other details you want to display -->
         {% endblock %}
-    </div>
-
-    <footer>
-        &copy; 2023 Cafe Name. All rights reserved.
-    </footer>
-</body>
+      </div>
+    </main>
+    {% include "layouts/footer.html" %}
+  </body>
 </html>

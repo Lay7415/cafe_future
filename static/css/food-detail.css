@@ -1,0 +1,27 @@
+
+
+h1 {
+    color: #007bff;
+    /* Cafe name color */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.food-info {
+    background-color: #ffffff;
+    /* White container background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Subtle box shadow */
+    padding: 20px;
+    margin: 20px;
+}
+
+p {
+    color: #495057;
+    /* Dark gray text color */
+}
+

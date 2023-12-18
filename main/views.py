@@ -5,6 +5,8 @@ from basket.models import BasketFood, BasketModel
 from access_management.models import User
 from .forms import FoodFilterForm
 from django.http import HttpResponseBadRequest
+from food_news.models import News
+
 
 def main_page_view(request):
     try:
@@ -13,6 +15,7 @@ def main_page_view(request):
         foods = Food.objects.all()
         if auth is None:
             if form.is_valid():
+                news_items = News.objects.all()
                 searchFoods = Food.objects.all()
                 search_query = form.cleaned_data['search_query'].lower()
                 if search_query != '':
@@ -24,10 +27,11 @@ def main_page_view(request):
                     searchFoods = search_results
                 else:
                     searchFoods = []
-            return render(request, 'main/main.html', {'form': form, 'foods': foods, 'searchFoods': searchFoods, 'auth': auth})
+            return render(request, 'main/main.html', {'form': form, 'foods': foods, 'searchFoods': searchFoods, 'auth': auth, 'news_items': news_items})
         else:
             if form.is_valid():
                 searchFoods = Food.objects.all()
+                news_items = News.objects.all()
                 search_query = form.cleaned_data['search_query'].lower()
                 if search_query != '':
                     search_results = []
@@ -53,6 +57,7 @@ def main_page_view(request):
                         "photo": food.photo,
                         "inBasket": in_basket
                     })
-                return render(request, 'main/main.html', {'form': form, "foods": filteredFoods, 'auth': auth, 'searchFoods': searchFoods, 'auth': auth})
+                context = {'form': form, "foods": filteredFoods, 'auth': auth, 'searchFoods': searchFoods, 'auth': auth, 'news_items': news_items}
+                return render(request, 'main/main.html', context)
     except Exception as error:
         return HttpResponseBadRequest(error)

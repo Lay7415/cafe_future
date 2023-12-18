@@ -22,16 +22,14 @@
           USE THE SEARCH TO QUICKLY FIND IN OUR MENU
         </p>
         <form class="main_page-search_container">
-          {% csrf_token %}
-          {{form}}
+          {% csrf_token %} {{form}}
           <button type="submit" class="main_page-search_btn">Search</button>
-                    {% for food in searchFoods %}
-          <div>
-            <h2>{{ food.name }}</h2>
-          </div>
-          {% endfor %}
-
         </form>
+        <div class="search-responses">
+          {% for food in searchFoods %}
+          <a class="search-response" href="{% url "food_detail" food.id %}">{{ food.name }}</a>
+          {% endfor %}
+        </div>
       </section>
       <seciton class="main_page_new_products">
         <h1 class="main_page_new_products-title">New Products</h1>
@@ -41,34 +39,53 @@
             <img src="{{ food.photo.url }}" alt="{{ food.description }}" />
             <h2>{{ food.name }}</h2>
             <p>Price: {{ food.price }}</p>
-            {% if auth %}
-            {% if food.inBasket %}
-            <h1 style="display: block" class="added-in-basket added-in-basket-{{food.id}}" data-food-id="{{ food.id }}">added in basket</h1>
-            <button style="display: none" class="new_products-btn new_products-btn-{{food.id}}"  data-food-id="{{ food.id }}" >add to basket</button>
+            {% if auth %} {% if food.inBasket %}
+            <h1
+              style="display: block"
+              class="added-in-basket added-in-basket-{{food.id}}"
+              data-food-id="{{ food.id }}"
+            >
+              added in basket
+            </h1>
+            <button
+              style="display: none"
+              class="new_products-btn new_products-btn-{{food.id}}"
+              data-food-id="{{ food.id }}"
+            >
+              add to basket
+            </button>
             {% else %}
-            <h1 style="display: none" class="added-in-basket added-in-basket-{{food.id}}" data-food-id="{{ food.id }}">added in basket</h1>
-            <button style="display: block" class="new_products-btn new_products-btn-{{food.id}}"  data-food-id="{{ food.id }}" >add to basket</button>
-            {% endif %}
-            {% endif %}
+            <h1
+              style="display: none"
+              class="added-in-basket added-in-basket-{{food.id}}"
+              data-food-id="{{ food.id }}"
+            >
+              added in basket
+            </h1>
+            <button
+              style="display: block"
+              class="new_products-btn new_products-btn-{{food.id}}"
+              data-food-id="{{ food.id }}"
+            >
+              add to basket
+            </button>
+            {% endif %} {% endif %}
           </div>
           {% endfor %}
         </div>
       </seciton>
-      {% comment %}
       <seciton class="main_page_news">
         <h1 class="main_page_news-title">News</h1>
         <div class="main_page_news-container">
-          {% for one_news in news %}
+          {% for new in news_items %}
           <div>
-            <img src="{{ one_news.photo.url }}" />
-            <h2>{{ one_news.name }}</h2>
-            <p>{{ one_news.description }}</p>
+            <img src="{{ new.image.url }}" />
+            <h2>{{ new.title }}</h2>
+            <p>{{ new.content }}</p>
           </div>
           {% endfor %}
         </div>
       </seciton>
-      {% endcomment %}
     </main>
     {% include "layouts/footer.html" %}
   </body>
-</html>

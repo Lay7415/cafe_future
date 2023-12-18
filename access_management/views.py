@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm, LoginForm
 from .models import User
-from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import check_password
 from django.http import HttpResponseBadRequest
+from django.contrib.auth import authenticate, login, logout
 
 
 

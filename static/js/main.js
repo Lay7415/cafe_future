@@ -25,10 +25,12 @@ async function sendFoodByFetch(event) {
 async function deleteFoodByFetch(event) {
   console.log('delete')
   const foodId = event.target.dataset.foodId;
+  console.log(foodId)
   const request = await fetch(
     `http://127.0.0.1:8000/client/basket/basket_food/delete/${foodId}`
-  );
-  const res = request.json();
+    );
+    const res = request.json();
+    console.log(res)
   event.target.style.display = "none";
   document.querySelector(`.new_products-btn-${foodId}`).style.display = "block";
 }
