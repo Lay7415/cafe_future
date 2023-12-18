@@ -28,7 +28,6 @@
       {% for food in foods %}
       <div class="food-card">
         <img src="{{ food.photo.url }}" alt="{{ food.name }}" />
-        <a href="{% url 'food_detail' food_id=food.id %}" class="food-card-btn">{{ food.name }}</a>
         <p>Price: {{ food.price }}</p>
         {% if auth %}
         {% if food.inBasket %}
