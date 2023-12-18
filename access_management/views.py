@@ -16,6 +16,7 @@ def registration_view(request):
             last_name = form.cleaned_data['last_name']
             
             user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
+            login(request, user)
             return redirect('main')
     else:
         form = RegistrationForm()
@@ -31,7 +32,6 @@ def login_view(request):
             
             user = User.objects.get(email=email)
             
-            print(check_password(password, user.password))
             if check_password(password, user.password):
                 authenticate(request, email=email)
                 login(request, user)

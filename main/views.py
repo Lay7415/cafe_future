@@ -21,8 +21,8 @@ def main_page_view(request):
                 "name": food.name,
                 "composition": food.composition,
                 "price": food.price,
-                "type_of_food": food.type_of_food.name,  # Замените на реальные атрибуты вашей модели FoodType
-                "photo": food.photo,  # Убедитесь, что у вас есть MEDIA_URL настроен в вашем settings.py
+                "type_of_food": food.type_of_food.name,
+                "photo": food.photo,
                 "inBasket": in_basket
             })
 

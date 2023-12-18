@@ -1,6 +1,7 @@
 const btns = document.getElementsByClassName("quantity-buttons");
 const total_amount = document.getElementById("total_amount");
 const total_quantity = document.getElementById("total_quantity");
+const delete_btns = document.getElementsByClassName("delete-btn");
 
 for (let i = 0; i < btns.length; i++) {
   const element = btns[i];
@@ -8,6 +9,11 @@ for (let i = 0; i < btns.length; i++) {
   secondBtn = element.children[2];
   firstBtn.addEventListener("click", changeQuantity);
   secondBtn.addEventListener("click", changeQuantity);
+}
+
+for (let i = 0; i < delete_btns.length; i++) {
+  const delete_btn = delete_btns[i];
+  delete_btn.addEventListener('click', deleteFoodByFetch)
 }
 
 function changeQuantity(event) {
@@ -48,6 +54,24 @@ async function sendFoodByFetch(foodId, data) {
 
   const res = await request.json();
 }
+
+async function deleteFoodByFetch(event) {
+  const foodId = event.target.dataset.foodId;
+  const quantitySpan = document.querySelector(`#quantity-${foodId}`);
+  const priceSpan = document.querySelector(`#price-${foodId}`);
+  const currentQuantity = Number(quantitySpan.innerHTML);
+  const initalPrice = Number(priceSpan.innerHTML.split("$")[1]);
+  total_amount.innerText = Number(total_amount.innerText) - initalPrice
+  total_quantity.innerText = Number(total_quantity.innerText) - currentQuantity
+
+  const request = await fetch(
+    `http://127.0.0.1:8000/client/basket/delete/${foodId}/`
+  );
+  const res = request.json();
+  event.target.parentNode.style.display = "none";
+}
+
+
 
 function getCookie(name) {
   let cookieValue = null;

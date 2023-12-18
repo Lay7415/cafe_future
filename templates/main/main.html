@@ -40,11 +40,11 @@
             <p>Price: {{ food.price }}</p>
             {% if auth %}
             {% if food.inBasket %}
-            <h1 style="display: block" class="added-in-basket added-in-basket-{{food.id}}">added in basket</h1>
-            <button style="display: none" class="new_products-btn"  data-food-id="{{ food.id }}" >add to basket</button>
+            <h1 style="display: block" class="added-in-basket added-in-basket-{{food.id}}" data-food-id="{{ food.id }}">added in basket</h1>
+            <button style="display: none" class="new_products-btn new_products-btn-{{food.id}}"  data-food-id="{{ food.id }}" >add to basket</button>
             {% else %}
-            <h1 style="display: none" class="added-in-basket added-in-basket-{{food.id}}">added in basket</h1>
-            <button style="display: block" class="new_products-btn"  data-food-id="{{ food.id }}" >add to basket</button>
+            <h1 style="display: none" class="added-in-basket added-in-basket-{{food.id}}" data-food-id="{{ food.id }}">added in basket</h1>
+            <button style="display: block" class="new_products-btn new_products-btn-{{food.id}}"  data-food-id="{{ food.id }}" >add to basket</button>
             {% endif %}
             {% endif %}
           </div>

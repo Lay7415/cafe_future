@@ -33,14 +33,11 @@ def catalog_view(request):
             foods = search_results
 
         if auth is not None:
-            print('auth')
             user = User.objects.get(id=auth)
             basket, another = BasketModel.objects.get_or_create(user=user)
-            basketId = BasketFood.objects.filter(
-                basket=basket).values_list('food', flat=True)
+            basketId = BasketFood.objects.filter(basket=basket).values_list('food', flat=True)
             filteredFoods = []
             for food in foods:
-                print(food.id in basketId)
                 in_basket = food.id in basketId
                 filteredFoods.append({
                     "id": food.id,
