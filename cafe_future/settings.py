@@ -46,9 +46,9 @@ INSTALLED_APPS = [
     'tables',
     'main',
     'food_news',
-    'basket'
+    'basket',
     'user_profile',
-    'stripe_payment'
+    'stripe_payment',
 ]
 
 # ... (remaining code)
