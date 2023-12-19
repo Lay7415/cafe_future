@@ -60,20 +60,35 @@ def catalog_view(request):
 
 def food_detail_view(request, food_id):
     try:
-        auth = request.user.id
-        user = User.objects.get(id=auth)
-        basket, another = BasketModel.objects.get_or_create(user=user)
-        foundfood = get_object_or_404(Food, id=food_id)
-        basketFood = BasketFood.objects.filter(food__id=food_id, basket=basket)
-        food = {
-            "id": foundfood.id,
-            "photo": foundfood.photo,
-            "name": foundfood.name,
-            "composition": foundfood.composition,
-            "price": foundfood.price,
-            "type_of_food": foundfood.type_of_food,
-            "inBasket": basketFood
+        if request.user.is_authenticated:
+            user = get_object_or_404(User, id=request.user.id)
+            basket, created = BasketModel.objects.get_or_create(user=user)
+        else:
+            user = None
+            basket = None
+
+        found_food = get_object_or_404(Food, id=food_id)
+        try:
+            # Try to get the BasketFood object
+            in_basket = BasketFood.objects.get(food=found_food, basket=basket)
+            in_basket = True
+        except BasketFood.DoesNotExist:
+            # BasketFood object not found
+            in_basket = False
+                 
+        food_details = {
+            "id": found_food.id,
+            "photo": found_food.photo,
+            "name": found_food.name,
+            "composition": found_food.composition,
+            "price": found_food.price,
+            "type_of_food": found_food.type_of_food,
+            "inBasket": in_basket
         }
-        return render(request, 'food/food_detail.html', {'food': food, 'auth': auth})
+
+        return render(request, 'food/food_detail.html', {'food': food_details, 'auth': user.id if user else None})
+
     except Exception as error:
-        return HttpResponseBadRequest(error)
+        # Handle exceptions and return a meaningful response
+        return HttpResponseBadRequest(f"Error: {error}")
+
