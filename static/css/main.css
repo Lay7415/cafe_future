@@ -183,12 +183,12 @@
 
 .main_page_news-container div {
     box-sizing: border-box;
-    width: 300px;
     padding: 20px;
     margin: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     text-align: center;
+    display: flex;
 }
 
 .main_page_news-container img {

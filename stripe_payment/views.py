@@ -9,8 +9,10 @@ stripe.api_key = "sk_test_51OF9ZiJlUwfLCchq4XPjOfoeqVGIDekaUl8wcvgyhjMMf2M0N8Jsp
 
 def stripePay(request):
     if request.method == "POST":
+        print('______________________________________________________')
+        print(request.POST)
+        print('______________________________________________________')
         amount = int(request.POST["amount"])
-        # Создать клиента (customer)
         try:
             customer = stripe.Customer.create(
                 email=request.POST.get("email"),
@@ -18,7 +20,6 @@ def stripePay(request):
                 description="Test donation",
                 source=request.POST['stripeToken']
             )
-        # обработка (e) всех возможных ощибок,
         except stripe.error.CardError as e:
             return HttpResponse("<h1>Произошла ошибка при списании средств с вашей карты:</h1>" + str(e))
 
@@ -37,7 +38,6 @@ def stripePay(request):
         except Exception as e:
             pass
 
-            # создания транзакции
         charge = stripe.Charge.create(
             customer=customer,
             amount=int(amount) * 100,

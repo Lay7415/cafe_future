@@ -8,9 +8,7 @@
   </head>
   <body>
     {% include "layouts/header.html" %}
-
-    <!-- HTML с использованием классов -->
-    <div class="food-container">
+    <main>
       <div class="filter-form">
         <h1>Table Catalog</h1>
         <form method="GET" action="{% url 'tables' %}">
@@ -19,7 +17,7 @@
           <button type="submit">Filter</button>
         </form>
       </div>
-
+      <div class="food-container">
       {% for table in tables %}
       <div onclick="redirectToReserved({{ table.id }})" class="table-card">
         <img src="{{ table.photo.url }}" alt="{{ table.description }}" />
@@ -30,7 +28,8 @@
       </div>
       {% endfor %}
     </div>
-
+  </main>
+    
     {% include "layouts/footer.html" %}
     <script>
       function redirectToReserved(tableId) {

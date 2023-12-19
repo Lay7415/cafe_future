@@ -80,9 +80,11 @@
           {% for new in news_items %}
           <div>
             <img src="{{ new.image.url }}" />
-            <h2>{{ new.title }}</h2>
-            <p>{{ new.content }}</p>
-          </div>
+            <div>
+              <h2>{{ new.title }}</h2>
+              <p>{{ new.content }}</p>
+            </div>
+            </div>
           {% endfor %}
         </div>
       </seciton>
