@@ -83,7 +83,7 @@ main {
 
 .form {
     width: 200px;
-    height: 200px;
+    height: 300px;
     margin-top: 20px;
     padding: 30px;
     border: 1px solid #ddd;
@@ -106,7 +106,7 @@ main {
     color: #555;
 }
 
-.form a {
+.form button {
     padding: 12px 0;
     cursor: pointer;
     border: none;
@@ -120,7 +120,7 @@ main {
 
 }
 
-.form a:hover {
+.form button:hover {
     background-color: #218838;
 }
 
@@ -132,4 +132,10 @@ main {
     border-radius: 20px;
     height: 40px;
     margin-top: 10px;
+}
+
+#reserved_table {
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
 }

@@ -54,9 +54,33 @@
           Total Quantity: <span id="total_quantity">{{ total_quantity }}</span>
         </p>
         <p>Total Amount: $<span id="total_amount">{{ total_amount }}</span></p>
-        <a href="{% url 'stripe_basket' basket.user.email %}">Pay</a>
+        <p>Your reserved tables</span></p>
+        <select id='reserved_table'>
+          <option value="---" selected>---</option>
+          {% if reserved_tables %}
+          {% for table in reserved_tables %}
+          <option value="{{table.table.table_number}}">{{table.table.table_number}}{{table.data}}</option>
+          {% endfor %}
+          {% endif %}
+      </select>
+        <button
+        data-email="{{request.user.email}}"
+        id="send_button"
+      >
+        Pay it
+      </button>
       </div>
-
+      <script defer>
+        reserved_table = document.getElementById("reserved_table");
+        send_button = document.getElementById("send_button");
+        send_button.addEventListener("click", (event) => {
+          console.log(reserved_table.value)
+          if (reserved_table.value === "---") return;
+          const tableId = send_button.getAttribute("data-table-id");
+          const email = send_button.getAttribute("data-email");
+          window.location.href = `http://127.0.0.1:8000/stripe/stripe/basket/${reserved_table.value}/${email}`;
+        });
+      </script>
       <script defer src="{% static 'js/basket.js' %}"></script>
     </main>
   </body>

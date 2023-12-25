@@ -47,9 +47,9 @@
     {% include "layouts/footer.html" %}
     <script defer>
       date = document.getElementById("date");
-      if (date.value) return
       send_button = document.getElementById("send_button");
       send_button.addEventListener("click", (event) => {
+        if (!date.value) return;
         const tableId = send_button.getAttribute("data-table-id");
         const email = send_button.getAttribute("data-email");
         window.location.href = `http://127.0.0.1:8000/stripe/stripe/table/${tableId}/${date.value}/${email}`;

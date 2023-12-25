@@ -5,13 +5,14 @@ from django.shortcuts import redirect
 from access_management.models import User
 from tables.models import Table, ReservedTable
 from basket.models import BasketModel, BasketFood
+from order.models import OrderOfFoodModel
 import stripe
 from datetime import timedelta
 
 stripe.api_key = "sk_test_51OF9ZiJlUwfLCchq4XPjOfoeqVGIDekaUl8wcvgyhjMMf2M0N8JspYGUwiLTLUAEkemHlaZdahWw97RFeZEk8TI200q5nhJawS"
 
 
-def stripePay_basket(request, email):
+def stripePay_basket(request, table_place, email):
     if request.method == "POST":
         amount = int(request.POST["amount"])
         try:
@@ -50,7 +51,18 @@ def stripePay_basket(request, email):
             api_key="sk_test_51OF9ZiJlUwfLCchq4XPjOfoeqVGIDekaUl8wcvgyhjMMf2M0N8JspYGUwiLTLUAEkemHlaZdahWw97RFeZEk8TI200q5nhJawS"
         )
         charge.save()  # Использует тот же ключ API.
-        return redirect("stripe/pay_success/")
+        user = User.objects.get(email=email)
+        basket = BasketModel.objects.get(user=user)
+        basket_foods = BasketFood.objects.filter(basket=basket)
+        amount_value = 0
+        products = ''
+        for item in basket_foods:
+            products += f"{item.food.name} {item.quantity}*{item.food.price} = {item.amount}/n"
+            amount_value += item.food.price
+        order = OrderOfFoodModel.objects.create(user=user, amount=amount_value, products=products, place=table_place)
+        deleted_foods = BasketFood.objects.filter(basket=basket)
+        deleted_foods.delete()
+        return redirect("basket")
     
     user = User.objects.get(email=email)
     print(user.first_name)
@@ -58,7 +70,7 @@ def stripePay_basket(request, email):
     basket_foods = BasketFood.objects.filter(basket=basket)
     amount_value = 0
     for item in basket_foods:
-        amount_value += item.food.price
+        amount_value += int(item.food.price)
     context = {"amount_value": amount_value, "email": email, "fullname": f'{user.first_name} {user.last_name}'}
     return render(request, "stripe_payment/index.html", context)
 

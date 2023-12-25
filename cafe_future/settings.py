@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'basket',
     'user_profile',
     'stripe_payment',
+    'order'
 ]
 
 # ... (remaining code)

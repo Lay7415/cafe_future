@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponseBadRequest
 from .models import BasketModel, BasketFood
+from tables.models import ReservedTable
 from food.models import Food
 from access_management.models import User
 import json
@@ -13,13 +14,14 @@ def basketView(request):
             user = User.objects.get(id=user_id)
             basket = BasketModel.objects.get(user=user)
             foods = BasketFood.objects.filter(basket=basket)
+            reserved_tables = ReservedTable.objects.filter(user=user)
             total_quantity = 0
             total_amount = 0
             for food in foods:
                 total_amount += food.amount
                 total_quantity += food.quantity
             context = {"foods": foods, 'auth': user_id,
-                       "total_quantity": total_quantity, "total_amount": total_amount, "basket": basket}
+                       "total_quantity": total_quantity, "total_amount": total_amount, "basket": basket, "reserved_tables": reserved_tables}
             return render(request, 'basket/index.html', context)
     except Exception as error:
         return HttpResponseBadRequest(error)
@@ -69,6 +71,7 @@ def deleteFromBaksetFood(request, id):
         return JsonResponse({"message": 'ok'})
     except Exception as error:
         return HttpResponseBadRequest(error)
+
 
 def deleteFromBakset(request, id):
     try:
