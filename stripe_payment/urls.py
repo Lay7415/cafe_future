@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import stripePay, paysuccess
+from . import views
 
 urlpatterns = [
-    path('stripe/<int:amount_value>/<str:email>/', stripePay, name="stripe"),
-    path('stripe/pay_success/', paysuccess, name="success_page"),
+    path('stripe/<str:email>/', views.stripePay_basket, name="stripe_basket"),
+    path('stripe/table/<int:table_id>/<date>/<str:email>/', views.stripePay_reserved_table, name="stripe_reserved_table"),
+    path('stripe/pay_success/', views.paysuccess, name="success_page"),
 ]
 

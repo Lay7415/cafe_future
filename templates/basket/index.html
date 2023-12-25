@@ -54,7 +54,7 @@
           Total Quantity: <span id="total_quantity">{{ total_quantity }}</span>
         </p>
         <p>Total Amount: $<span id="total_amount">{{ total_amount }}</span></p>
-        <a href="{% url 'stripe' total_amount basket.user.email %}">Pay</a>
+        <a href="{% url 'stripe_basket' basket.user.email %}">Pay</a>
       </div>
 
       <script defer src="{% static 'js/basket.js' %}"></script>

@@ -3,8 +3,8 @@
 <html>
   <head>
     <title>Reserved Table</title>
-    <link rel="stylesheet" href="{% static "css/main_layout.css" %}"> 
-    <link rel="stylesheet" type="text/css" href="{% static "css/reserved_tables.css" %}">
+    <link rel="stylesheet" href="{% static "css/main_layout.css" %}"> <link
+    rel="stylesheet" type="text/css" href="{% static "css/reserved_tables.css"%}">
   </head>
   <body class="reserved-tables-body">
     {% include "layouts/header.html" %}
@@ -31,14 +31,29 @@
           {% endif %}
         </div>
       </div>
-      <form action="" method="post" class="recerved-table">
+      <div action="" class="recerved-table">
         <h2 class="table-number">Price{{ table.price }}</h2>
         <h2 class="table-number">Duration 2 hour</h2>
-        <h2 class="table-number">Date</h2>
-        <input type="datetime-local" name="data" class="input" required>
-        <a href="{% url 'stripe' table.price|floatformat:0 user.email %}">Pay it</a>
-      </form>
+        <input type="datetime-local" name="data" id="date" required />
+        <button
+          data-email="{{request.user.email}}"
+          data-table-id="{{table.id}}"
+          id="send_button"
+        >
+          Pay it
+        </button>
+      </div>
     </main>
     {% include "layouts/footer.html" %}
+    <script defer>
+      date = document.getElementById("date");
+      if (date.value) return
+      send_button = document.getElementById("send_button");
+      send_button.addEventListener("click", (event) => {
+        const tableId = send_button.getAttribute("data-table-id");
+        const email = send_button.getAttribute("data-email");
+        window.location.href = `http://127.0.0.1:8000/stripe/stripe/table/${tableId}/${date.value}/${email}`;
+      });
+    </script>
   </body>
 </html>

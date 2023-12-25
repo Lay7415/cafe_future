@@ -79,7 +79,7 @@ main {
     margin-left: 100px;
 }
 
-.recerved-table a {
+.recerved-table button {
     display: block;
     text-decoration: none;
     text-align: center;
@@ -91,13 +91,15 @@ main {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease-in-out;
+    margin: 0 auto;
+    width: 200px;
 }
 
-.recerved-table a:hover {
+.recerved-table button:hover {
     background-color: #e6b800;
 }
 
-.input {
+#date {
     padding: 10px;
     margin: 10px 0;
 }
