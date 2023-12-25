@@ -22,7 +22,7 @@ class Table(models.Model):
 class ReservedTable(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     table = models.ForeignKey(Table, on_delete=models.CASCADE, verbose_name='Стол')
-    data = models.DateTimeField(verbose_name='Дата')
+    data = models.DateTimeField(verbose_name='Дата', unique=True)
     duration = models.DurationField(verbose_name='Продолжительность')
 
     def __str__(self):

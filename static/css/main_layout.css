@@ -138,3 +138,7 @@ body {
 .footer-copyright {
     font-size: 12px;
 }
+
+main {
+    min-height: 100vh;
+}

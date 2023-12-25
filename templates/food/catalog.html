@@ -16,7 +16,6 @@
 
       
       <!-- HTML с использованием классов -->
-    <div class="food-catalog-container">
       <div class="filter-form">
         <h1>Food Catalog</h1>
         <form method="GET" action="{% url 'catalog' %}">
@@ -24,7 +23,7 @@
           <button type="submit">Filter</button>
         </form>
       </div>
-      
+    <div class="food-catalog-container">
       {% for food in foods %}
       <div class="food-card">
         <img src="{{ food.photo.url }}" alt="{{ food.name }}" />

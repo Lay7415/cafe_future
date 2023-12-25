@@ -3,33 +3,38 @@
 <html>
   <head>
     <title>Отфильтрованные столы</title>
-    <link rel="stylesheet" href="{% static "css/main_layout.css" %}"> 
-    <link rel="stylesheet" href="{% static "css/tables.css" %}">
+    <link rel="stylesheet" href="{% static "css/main_layout.css" %}"> <link
+    rel="stylesheet" href="{% static "css/tables.css" %}">
   </head>
   <body>
     {% include "layouts/header.html" %}
-
-    <!-- HTML с использованием классов -->
-    <div class="food-container">
+    <main>
       <div class="filter-form">
         <h1>Table Catalog</h1>
         <form method="GET" action="{% url 'tables' %}">
-          {% csrf_token %}
-          {{form}}
+          {% csrf_token %} {{form}}
           <button type="submit">Filter</button>
         </form>
       </div>
-
-      {% for table in tables %}
-      <div onclick="redirectToReserved({{ table.id }})" class="table-card">
-        <img src="{{ table.photo.url }}" alt="{{ table.description }}" />
-        <h2>{{ table.name }}</h2>
-        {% comment %} <p>{{ table.composition }}</p> {% endcomment %}
-        <p>Price: {{ table.price }}</p>
-        <p>Type: {{ table.type }}</p>
+      <div class="food-container">
+        {% for table in tables %} {% if auth %}
+        <div onclick="redirectToReserved({{ table.id }})" class="table-card">
+          <img src="{{ table.photo.url }}" alt="{{ table.description }}" />
+          <h2>{{ table.name }}</h2>
+          <p>Price: {{ table.price }}</p>
+          <p>Type: {{ table.type }}</p>
+        </div>
+        {% else %}
+        <div class="table-card">
+          <img src="{{ table.photo.url }}" alt="{{ table.description }}" />
+          <h2>{{ table.name }}</h2>
+          <p>Price: {{ table.price }}</p>
+          <p>Type: {{ table.type }}</p>
+        </div>
+        {% endif %} 
+        {% endfor %}
       </div>
-      {% endfor %}
-    </div>
+    </main>
 
     {% include "layouts/footer.html" %}
     <script>

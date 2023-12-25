@@ -9,12 +9,10 @@ urlpatterns = [
     path('client/food/', include('food.urls')),
     path('client/tables/', include('tables.urls')),
     path('', include('main.urls')),
-    # path('', include('food_news.urls')),
     path('client/basket/', include('basket.urls')),
     path('', include('food_news.urls')),
-    path('', include('user_profile.urls')),
     path('stripe/', include('stripe_payment.urls')),
-
+    path('client/account/', include('user_account.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,4 +1,5 @@
 from django import forms
+from .models import ReservedTable
 from .models import Table
 
 
@@ -8,7 +9,7 @@ class TableFilterForm(forms.Form):
         label='Table type',
         required=False,
     )
-    
+
     min_price = forms.IntegerField(
         label='Min price',
         required=False,
@@ -20,3 +21,12 @@ class TableFilterForm(forms.Form):
         min_value=0,
         initial=5000,
     )
+
+
+class ReservedTableForm(forms.ModelForm):
+    class Meta:
+        model = ReservedTable
+        fields = ['user', 'table', 'data', 'duration']
+        widgets = {
+            'data': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        }
