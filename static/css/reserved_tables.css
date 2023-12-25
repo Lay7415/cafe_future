@@ -1,70 +1,103 @@
-/* Стили для страницы забронированных столов */
-
-.reserved-tables-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f8f8;
+body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .reserved-tables-content {
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
     display: flex;
+    width: 800px; /* Задайте фиксированную ширину контента */
 }
 
 .reserved-tables-info {
     flex: 1;
-    padding-right: 20px; /* Добавлен отступ справа */
+    padding: 20px;
 }
 
 .reserved-tables-title {
     color: #333;
-    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 .table-number {
-    color: #4CAF50;
-    margin-top: 20px;
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 15px;
 }
 
 .recerved_table-image {
-    /* Стили для изображения (добавьте при необходимости) */
+    width: 100%;
+    max-height: 300px; /* Максимальная высота изображения */
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .recerved_table-price {
-    /* Стили для цены (добавьте при необходимости) */
+    color: #777;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
 .reservation-list {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
 }
 
 .reservation-item {
-    background-color: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333; /* Изменено на более читаемый цвет текста */
+    font-size: 16px; /* Увеличен размер шрифта для лучшей читаемости */
+    margin-bottom: 8px; /* Увеличен отступ снизу для лучшего визуального разделения элементов */
+    border-bottom: 1px solid #ddd; /* Добавлена линия между элементами для лучшего визуального разделения */
+    padding-bottom: 8px; /* Увеличен отступ снизу элемента */
 }
 
 .no-reservation {
-    color: #777;
+    color: #888;
+    font-size: 16px;
 }
 
 .recerved-table {
-    flex: 1; /* Занимает всю доступную ширину */
-    /* Добавьте стили для формы (поля, кнопки) при необходимости */
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    margin-left: 100px;
 }
 
-/* Опциональные стили для адаптивности */
-@media (max-width: 600px) {
-    .reserved-tables-content {
-        flex-direction: column;
-    }
+.recerved-table a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background-color: #ffcc00;
+    color: #333;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
 
-    .reserved-tables-info,
-    .recerved-table {
-        padding-right: 0; /* Убираем отступ справа при вертикальной компоновке */
-    }
+.recerved-table a:hover {
+    background-color: #e6b800;
+}
+
+.input {
+    padding: 10px;
+    margin: 10px 0;
 }

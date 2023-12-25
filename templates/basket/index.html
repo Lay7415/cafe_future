@@ -48,15 +48,14 @@
         </div>
         {% endfor %}
       </div>
-      <form method="post" action="{% url "stripe" %}">
-        {% csrf_token %}
+      <div class="form">
         <h2>Shopping Cart</h2>
         <p>
           Total Quantity: <span id="total_quantity">{{ total_quantity }}</span>
         </p>
         <p>Total Amount: $<span id="total_amount">{{ total_amount }}</span></p>
-        <button type="submit">Pay</button>
-      </form>
+        <a href="{% url 'stripe' total_amount basket.user.email %}">Pay</a>
+      </div>
 
       <script defer src="{% static 'js/basket.js' %}"></script>
     </main>

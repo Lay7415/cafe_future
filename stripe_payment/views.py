@@ -1,17 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
-
+from access_management.models import User
 import stripe
 
 stripe.api_key = "sk_test_51OF9ZiJlUwfLCchq4XPjOfoeqVGIDekaUl8wcvgyhjMMf2M0N8JspYGUwiLTLUAEkemHlaZdahWw97RFeZEk8TI200q5nhJawS"
 
 
-def stripePay(request):
+def stripePay(request, amount_value, email):
     if request.method == "POST":
-        print('______________________________________________________')
-        print(request.POST)
-        print('______________________________________________________')
         amount = int(request.POST["amount"])
         try:
             customer = stripe.Customer.create(
@@ -50,8 +47,12 @@ def stripePay(request):
         )
         charge.save()  # Использует тот же ключ API.
         return redirect("stripe/pay_success/")
-
-    return render(request, "stripe_payment/index.html")
+    
+    user = User.objects.get(email=email)
+    print(user.first_name)
+    
+    context = {"amount_value": amount_value, "email": email, "fullname": f'{user.first_name} {user.last_name}'}
+    return render(request, "stripe_payment/index.html", context)
 
 
 def paysuccess(request):

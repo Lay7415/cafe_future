@@ -81,37 +81,46 @@ main {
     background-color: #0056b3;
 }
 
-form {
-    width: 300px;
+.form {
+    width: 200px;
+    height: 200px;
     margin-top: 20px;
-    padding: 15px;
+    padding: 30px;
     border: 1px solid #ddd;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-form h2 {
+.form h2 {
     text-align: center;
     color: #333;
 }
 
-form p {
+.form p {
     margin: 10px 0;
     color: #555;
 }
 
-form button {
-    width: 100%;
+.form a {
     padding: 12px 0;
     cursor: pointer;
     border: none;
     background-color: #28a745;
     color: #fff;
     border-radius: 4px;
+    width: 200px;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+
 }
 
-form button:hover {
+.form a:hover {
     background-color: #218838;
 }
 

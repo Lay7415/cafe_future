@@ -2,7 +2,6 @@ from django.db import models
 from access_management.models import User
 from food.models import Food
 
-# Create your models here.
 class BasketModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
     

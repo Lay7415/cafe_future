@@ -9,7 +9,6 @@ urlpatterns = [
     path('client/food/', include('food.urls')),
     path('client/tables/', include('tables.urls')),
     path('', include('main.urls')),
-    # path('', include('food_news.urls')),
     path('client/basket/', include('basket.urls')),
     path('', include('food_news.urls')),
     path('', include('user_profile.urls')),
