@@ -4,10 +4,11 @@
       <a href="{% url "main" %}" class="main_page-header-menu-btn">HOME</a>
       <a href="{% url "catalog" %}" class="main_page-header-menu-btn">MENU</a>
       <a href="{% url "tables" %}" class="main_page-header-menu-btn">TABLES</a>
-      {% if auth %}
+      {% if request.user.id %}
       <a href="{% url "basket" %}" class="main_page-header-menu-btn">BASKET</a>
       {% endif %}
-      {% if auth %}
+      {% if request.user.id %}
+      <a href="{% url "my_account" %}" class="main_page-header-menu-btn">{{request.user.email}}</a>
       <a href="{% url "logout" %}" class="main_page-header-menu-register-btn">Logout</a>
       {% else %}
       <a href="{% url "registration" %}" class="main_page-header-menu-register-btn">Registration</a>
